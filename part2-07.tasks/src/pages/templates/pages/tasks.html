@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head lang="en">
+        <meta charset="UTF-8" />
+        <title>Tasks</title>
+    </head>
+    <body>
+
+        <h2>Tasks</h2>
+
+        <ul id="tasks">
+        </ul>
+
+
+        <form>
+            <input type="text" name="name" id="name"/>
+            <input type="button" onclick="addTask();" value="Add!"/>
+        </form>
+
+        <!-- the javascript has been embedded to the same site -->
+        <script inline="javascript">
+            var url = "./tasks";
+
+
+            function loadTasks() {
+                // Write loading code here 
+
+                var http = new XMLHttpRequest();
+                // We are not using any CSRF protection(!) this should not be done in production  
+                http.open("GET", 'tasks', true); 
+//                http.setRequestHeader("Content-type", "application/json"); // this isnt neccessary
+                var data = new Object();
+                data.name = name;
+                http.onreadystatechange = function () {
+                        if (http.readyState === 4) {
+                            if (http.status === 200) {
+//QUESTION                      addTaskToList(JSON.parse(http.responseText)); //this results in "undefined". The 3 lines below works however.
+                                
+                                var testparse = JSON.parse(http.responseText);
+                                for (const item of testparse.tasks) { 
+                                    addTaskToList(item); 
+                                    }
+                                }
+                            }
+                        }
+
+                http.send(); // Old line: ` http.send(JSON.stringify(data));  ` send can (and should) be empty in POST requests to activate the XHR request,              
+                }
+                               
+        
+/*
+
+Question 3:
+What is the difference between mutable and immutable objects (examples?)?
+
+
+*/
+
+		</script>
+
+        <script inline="javascript">
+            function addTask() {
+                console.log("in addTasks function")
+                var name = document.querySelector("#name").value;
+                if (!name) {
+                    return;
+                }
+
+                console.log("name in addTask() is", name);
+
+                var http = new XMLHttpRequest();
+
+				// We are not using any CSRF protection(!) this should not be done in production
+                http.open("POST", 'add', true);  // Double quotes behave the same as single quotes. So it doesn't matter.
+                http.setRequestHeader("Content-type", "application/json");
+                var data = new Object();
+                data.name = name;
+
+                http.onreadystatechange = function () {
+                    if (http.readyState === 4) {
+                        if (http.status === 200) {
+                            addTaskToList(JSON.parse(http.responseText));
+                        }
+                    }
+                }
+                http.send(JSON.stringify(data));
+            }
+
+
+            function addTaskToList(task) {
+                var liElement = document.createElement("li");
+                liElement.appendChild(document.createTextNode(task.name));
+                document.querySelector("#tasks").appendChild(liElement);
+            }
+
+
+            window.onload = function () {
+                console.log("in window.load function")
+                loadTasks();
+            };
+        </script>
+    </body>
+</html>

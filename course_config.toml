@@ -1,0 +1,52 @@
+course = 'mooc-securing-software-23'
+[exercises."part1-01.portscanner"]
+id = 197233
+checksum = 'c62c68a816582ea210dcc8403cf0405b'
+
+[exercises."part1-02.helloweb"]
+id = 197228
+checksum = '827a2b9af12e3873fbe39d461650f0b3'
+
+[exercises."part1-03.calculator"]
+id = 197231
+checksum = '9f506713143edf11a45f674673ce371c'
+
+[exercises."part1-04.templates"]
+id = 197229
+checksum = '3b75218bdcc4763d6d7ed6b49516b0db'
+
+[exercises."part1-05.hellolist"]
+id = 197230
+checksum = 'c5d9001a85083791330da1a7a75620ed'
+
+[exercises."part1-06.notebook"]
+id = 197232
+checksum = '584e321e8bc343e84eaed52384ed614f'
+
+[exercises."part2-07.tasks"]
+id = 197234
+checksum = 'f425b1e27410ee35f47babd9d1a7ef88'
+
+[exercises."part2-08.hellodatabase"]
+id = 197239
+checksum = 'd3dc9cd1e9a4ab701df3331aa7948e9f'
+
+[exercises."part2-09.helloinsert"]
+id = 197235
+checksum = '72f20e4c339f5439e3d75957ad6241ad'
+
+[exercises."part2-10.hellowebwithdatabase"]
+id = 197237
+checksum = '4dc7fc012ecb69a52c8dad2df9b6945f'
+
+[exercises."part2-11.banktransfer"]
+id = 197238
+checksum = 'f2eed0858cf280671034efc754b2018f'
+
+[exercises."part2-12.simplebanking"]
+id = 197240
+checksum = '52b32e70fb6241680b36b6b5d20f3c37'
+
+[exercises."part2-13.sessionhijack"]
+id = 197236
+checksum = 'a2630c54c836230368964bf314fb9dc0'
